@@ -324,8 +324,8 @@
       <div class="help-item">
         <h4>8. 项目说明文档（README）</h4>
         <p>您可以点击下方链接，查看或下载本项目的完整说明文档：</p>
-        <p><a href="https://raw.githubusercontent.com/six686/Shop/refs/heads/main/README.md" target="_blank" rel="noopener noreferrer">GitHub 原始链接（推荐）</a></p>
-        <p><a href="https://raw.gh.registry.cyou/six686/Shop/refs/heads/main/README.md" target="_blank" rel="noopener noreferrer">备用链接（国内加速）</a></p>
+        <p><a href="https://raw.githubusercontent.com/66xx5120/Shop/refs/heads/main/README.md" target="_blank" rel="noopener noreferrer">GitHub 原始链接（推荐）</a></p>
+        <p><a href="https://raw.gh.registry.cyou/66xx5120/Shop/refs/heads/main/README.md" target="_blank" rel="noopener noreferrer">备用链接（国内加速）</a></p>
         <p>文档内容涵盖：系统架构、功能列表、部署指南、数据库结构、常见问题等。</p>
       </div>
     </div>
