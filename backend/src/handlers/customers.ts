@@ -46,6 +46,15 @@ export async function createCustomer(c: Context<{ Bindings: Env }>) {
   if (!name || !phone) {
     return c.json({ success: false, message: '姓名和手机号不能为空' }, 400);
   }
+
+  // 检查手机号是否已存在
+  const existing = await c.env.DB.prepare(
+    'SELECT id FROM t_customer WHERE phone = ?'
+  ).bind(phone).first();
+  if (existing) {
+    return c.json({ success: false, message: `手机号 ${phone} 已存在，请勿重复添加` }, 400);
+  }
+
   const finalVerifyCode = verifyCode || phone.slice(-4);
   let balance = 0;
   
