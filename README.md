@@ -237,6 +237,11 @@ CREATE TABLE IF NOT EXISTS t_system_config (
 INSERT OR IGNORE INTO t_system_config (key, value) VALUES ('allow_registration', 'true');
 ```
 
+-- 数据库添加唯一索引（防止并发重复）
+```sql
+CREATE UNIQUE INDEX IF NOT EXISTS idx_customer_phone ON t_customer (phone);
+```
+
 执行完毕后，再次访问 https://你的-worker-name.你的子域名.workers.dev/api/health 应该会返回 {"status":"ok"}。
 
 ## 前端部署到Cloudflare Pages
@@ -445,6 +450,18 @@ DELETE FROM t_employee;
 ```sql
 DELETE FROM t_customer WHERE name LIKE '测试%';
 ```
+
+
+可选：如果表中已存在重复手机号，执行创建唯一索引语句会报错。您需要先清理重复数据，再创建索引。清理重复数据的 SQL（保留每个手机号中 ID 最小的那条）：
+
+```sql
+DELETE FROM t_customer 
+WHERE id NOT IN (
+  SELECT MIN(id) FROM t_customer GROUP BY phone
+);
+```
+
+执行后再创建唯一索引。
 
 ## 安全提醒：执行删除操作前建议先备份数据库（D1 控制台可导出）。确认无误后再执行。
 
