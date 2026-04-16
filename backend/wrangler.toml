@@ -1,0 +1,14 @@
+name = "shop-api"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+keep_vars = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "shop-db"
+database_id = "5dc5631b-b175-43e3-a016-8537f5f6dbd0"   # 你的D1数据库ID
+# preview_database_id = "你的预览数据库ID"
+
+# [vars]
+# JWT_SECRET = "你的随机字符串，至少32位"
