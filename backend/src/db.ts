@@ -41,4 +41,12 @@ export async function initDatabase(env: Env) {
       console.error('Insert default service error:', e.message);
     }
   }
+
+  // 为手机号添加唯一索引（防止重复会员）
+    try {
+      await env.DB.exec("CREATE UNIQUE INDEX IF NOT EXISTS idx_customer_phone ON t_customer (phone)");
+    } catch (e: any) {
+  // 如果表中已有重复数据，索引创建会失败，仅记录日志不影响其他操作
+      console.error("创建唯一索引失败（可能存在重复手机号）:", e.message);
+    }
 }
